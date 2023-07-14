@@ -1,2 +1,0 @@
-# multibranch_pipeline_test
-multibranch_pipeline_test
