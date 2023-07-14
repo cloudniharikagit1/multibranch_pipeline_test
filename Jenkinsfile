@@ -12,6 +12,7 @@ pipeline {
             steps {
                 echo "this is comming from first stage ${name} "
                 echo "this is comming from ${course} first stage "
+                 echo "this is fron global environment variable ${BRANCH_NAME=main}"
 
             }
         }
