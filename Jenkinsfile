@@ -7,14 +7,14 @@ pipeline {
     stages {
         stage (" when condition") {
             when {
-              expression {
-                BRANCH_NAME ==~ /(production|stagging)/
-
+              allOf {
+                branch 'production'
+                environment name: 'DEPLOY_TO', value: 'production'
               }
             }
 
             steps {
-                echo "deploying in production "
+                echo " all satisfied "
             }
         }
         stage ('second stage') {
