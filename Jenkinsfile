@@ -1,10 +1,18 @@
 pipeline {
-    agent any
+    agent any 
+    environment {
+        DEPLOY_TO = "production"
+
+    }
     stages {
-        stage ('first stage'){
+        stage (" when condition") {
+            when {
+                environment name: 'DEPLOY_TO' , value = 'production'
+            }
             steps {
-                echo "this is comming from developer branch"
+                echo "deploying in production "
             }
         }
     }
+
 }
