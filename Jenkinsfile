@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('first stage'){
             steps {
-                echo "this is comming from release branch"
+                echo "this is comming from release3 branch"
             }
         }
     }
