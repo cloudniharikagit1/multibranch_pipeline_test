@@ -1,23 +1,16 @@
 pipeline {
-    agent any
+    agent any 
+    environment {
+        DEPLOY_TO = "production"
+    }
     stages {
-        stage ('first stage'){
-            environment {
-                Github_creds = credentials('github_creds')
-            } 
-            steps {
-                echo "github credentials are ${Github_creds}"
-                echo "username is : ${Github_creds_USR}"
-                echo "username is : ${Github_creds_psw}"
-
+        stage (" when condition") {
+            when {
+                environment name: 'DEPLOY_TO' , value = 'production'
             }
-        }
-        stage ('second stage'){
             steps {
-                echo "this is comming from second stage "
-
+                echo "deploying in production "
             }
         }
     }
-
 }
