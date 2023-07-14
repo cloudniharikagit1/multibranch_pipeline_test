@@ -1,26 +1,21 @@
 pipeline {
     agent any
-    environment {
-        name = "pinky"
-        course = "devops"
-    }
     stages {
         stage ('first stage'){
             environment {
-                course = "k8s"
-            }
+                Github_creds = credentials('github_creds')
+            } 
             steps {
-                echo "this is comming from first stage ${name} "
-                echo "this is comming from ${course} first stage "
-            
+                echo "github credentials are ${Github_creds}"
+                echo "username is : ${Github_creds_USR}"
+                echo "username is : ${Github_creds_psw}"
 
             }
         }
         stage ('second stage'){
             steps {
-                echo "this is comming from ${course} second stage "
-                sh "printenv"
-                
+                echo "this is comming from second stage "
+
             }
         }
     }
