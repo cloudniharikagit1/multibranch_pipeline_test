@@ -2,15 +2,24 @@ pipeline {
     agent any 
     environment {
         DEPLOY_TO = "production"
+
     }
     stages {
-        stage ("when condition") {
+        stage ("prod") {
             when {
-                environment name: 'DEPLOY_TO' , value: 'production'
+              allOf {
+                branch 'production'
+                environment name: 'DEPLOY_TO', value: 'production'
+              }
             }
+
             steps {
-                echo "deploying in production "
+                echo " all satisfied "
+            }
+        }
+        stage ('second stage') {
+            steps {
+                echo " excute all"
             }
         }
     }
-}
