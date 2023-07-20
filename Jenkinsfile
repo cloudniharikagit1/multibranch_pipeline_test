@@ -1,10 +1,26 @@
 pipeline {
-    agent any
+    agent any 
+    environment {
+        DEPLOY_TO = "SIVA"
+    }
     stages {
-        stage ('first stage'){
+        stage ("deploy") {
+            when {
+              allOf {
+                branch 'production'
+                environment name: 'DEPLOY_TO', value: 'SIVA'
+              }
+            }
+
             steps {
-                echo "this is comming from developer branch"
+                echo " all satisfied "
+            }
+        }
+        stage ('second stage') {
+            steps {
+                echo " excute all"
             }
         }
     }
+
 }
